@@ -10,7 +10,7 @@ public class Main {
         ObjetPostal [] BoiteALettres = new ObjetPostal[4];
 
         for (int i = 0; i<BoiteALettres.length; i++) {
-            System.out.println("** Objet no " + i + " : ");
+            System.out.println("\n" + "** Objet no " + i + " : ");
             BoiteALettres[i] = menu();
             System.out.println("\n" + BoiteALettres[i]);
         }
