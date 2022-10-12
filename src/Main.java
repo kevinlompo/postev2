@@ -12,7 +12,7 @@ public class Main {
         for (int i = 0; i<BoiteALettres.length; i++) {
             System.out.println("** Objet no " + i + " : ");
             BoiteALettres[i] = menu();
-            System.out.println(BoiteALettres[i]);
+            System.out.println("\n" + BoiteALettres[i]);
         }
     }
     public static ObjetPostal menu() {
@@ -21,12 +21,12 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int swValue;
         System.out.println("============================");
-        System.out.println("|   MENU DE SELECTION   |");
+        System.out.println("|   MENU DE SELECTION       |");
         System.out.println("============================");
-        System.out.println("| Options:                 |");
-        System.out.println("|        1. LETTRE      |");
-        System.out.println("|        2. COLIS      |");
-        System.out.println("|        3. Exit           |");
+        System.out.println("| Options:                  |");
+        System.out.println("|        1. LETTRE          |");
+        System.out.println("|        2. COLIS           |");
+        System.out.println("|        3. Exit            |");
         System.out.println("============================");
         swValue = sc.nextInt();
 
@@ -39,7 +39,7 @@ public class Main {
                 break;
             case 3:
                 System.out.println("Exit selected");
-                break;
+                System.exit(0);
             default:
                 System.out.println("Invalid selection");
                 break;
@@ -56,17 +56,17 @@ public class Main {
     public static Lettre lettreInfo() {
         Scanner sc = new Scanner(System.in);
         Lettre lettre = new Lettre("", "", "", 00000, false, true);
-        System.out.println("Entrer le nom du destinataire de la lettre : " );
+        System.out.print("Entrer le nom du destinataire de la lettre : " );
         lettre.setNom(sc.nextLine());
-        System.out.println("Entrer l'adresse du destinataire de la lettre : ");
+        System.out.print("Entrer l'adresse du destinataire de la lettre : ");
         lettre.setAdresse(sc.nextLine());
-        System.out.println("Entrer la ville du destinataire de la lettre : ");
+        System.out.print("Entrer la ville du destinataire de la lettre : ");
         lettre.setNomVille(sc.nextLine());
-        System.out.println("Entrer le code postal du destinataire de la lettre ");
+        System.out.print("Entrer le code postal du destinataire de la lettre ");
         lettre.setCodePost(sc.nextInt());
-        System.out.println("Est-elle en recommandee ? " );
+        System.out.print("Est-elle en recommandee ? " );
         lettre.setExRec(sc.nextBoolean());
-        System.out.println("Est-elle en urgence ? ");
+        System.out.print("Est-elle en urgence ? ");
         lettre.setExUr(sc.nextBoolean());
         lettre.prixAff();
         return lettre;
@@ -74,17 +74,17 @@ public class Main {
     public static Colis colisInfo() {
         Scanner sc = new Scanner(System.in);
         Colis colis = new Colis("", "", "", 00000, false, 0);
-        System.out.println("Entrer le nom du destinataire du colis : " );
+        System.out.print("Entrer le nom du destinataire du colis : " );
         colis.setNom(sc.nextLine());
-        System.out.println("Entrer l'adresse du destinataire du colis : ");
+        System.out.print("Entrer l'adresse du destinataire du colis : ");
         colis.setAdresse(sc.nextLine());
-        System.out.println("Entrer la ville du destinataire du colis : ");
+        System.out.print("Entrer la ville du destinataire du colis : ");
         colis.setNomVille(sc.nextLine());
-        System.out.println("Entrer le code postal du destinataire du colis : ");
+        System.out.print("Entrer le code postal du destinataire du colis : ");
         colis.setCodePost(sc.nextInt());
-        System.out.println("Est-il en recommande ? " );
+        System.out.print("Est-il en recommande ? " );
         colis.setExRec(sc.nextBoolean());
-        System.out.println("Entrer le poids du colis : ");
+        System.out.print("Entrer le poids du colis : ");
         colis.setPoids(sc.nextDouble());
         colis.prixAff();
         return colis;
