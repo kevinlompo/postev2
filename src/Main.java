@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
 /*        Colis colis1 = new Colis("Vincent", "Av. Berthelot", "Paris", 75005, false, 0.741);
         Colis colis2 = new Colis("Dubois", "Bd Victor Hugo", "Toulon", 83000, true, 1.387);
         Lettre lettre1 = new Lettre("Dupont", "Rue Colbert", "Marseille", 13001, false, true);
@@ -24,7 +24,7 @@ public class Main {
         }
     }
 
-    public static ObjetPostal menu() throws IOException  {
+    public static ObjetPostal menu(){
         Lettre lettre = null;
         Colis colis = null;
         Scanner sc = new Scanner(System.in);
@@ -47,11 +47,11 @@ public class Main {
             lettre = lettreInfo();
             return lettre;
         }
-        else if(swValue == "2") {
+        else if(swValue.equals("2")) {
             colis = colisInfo();
             return colis;
         }
-        else if(swValue == "3") {
+        else if(swValue.equals("3")) {
             System.out.println("Exit selected");
             System.exit(0);
         }
@@ -60,37 +60,38 @@ public class Main {
     }
     public static Lettre lettreInfo() {
         Scanner sc = new Scanner(System.in);
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-       String temp = bf.readLine();
-       int tempI = bf.read();
-       String value ="";
-       boolean tempB = bf.ready();
+        String v;
+        //BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         Lettre lettre = new Lettre("", "", "", 00000, false, true);
         System.out.print("Entrer le nom du destinataire de la lettre : ");
-        lettre.setNom(temp);
+        lettre.setNom(sc.nextLine());
         System.out.print("Entrer l'adresse du destinataire de la lettre : ");
-        lettre.setAdresse(temp);
+        lettre.setAdresse(sc.nextLine());
         System.out.print("Entrer la ville du destinataire de la lettre : ");
-        lettre.setNomVille(temp);
+        lettre.setNomVille(sc.nextLine());
         System.out.print("Entrer le code postal du destinataire de la lettre :  ");
-        lettre.setCodePost(tempI);
-        System.out.print("Est-elle en recommandee ? (1 pour oui et 2 pour non)");
-        try {
-            lettre.setExRec(tempB);
-        } catch (NumberFormatException e) {
-            while (temp.matches("[1-2]")) {
-                value = sc.nextLine();
-                lettre.exRec = value == "1" ? true : false;
-            }
+        lettre.setCodePost(sc.nextInt());
+        System.out.print("Est-elle en recommandee ? (1 pour oui et 2 pour non ) : ");
+        v = sc.nextLine();
+        while (!v.matches("[1-2]")){
+            System.out.print("Est-elle en recommandee ? (1 pour oui et 2 pour non ) : ");
+            v = sc.nextLine();
         }
-        System.out.print("Est-elle en urgence ? ");
-        lettre.setExUr(sc.nextBoolean());
+        lettre.setExRec(v.equals("1")?true:false);
+        System.out.print("Est-elle en urgence ? (1 pour oui et 2 pour non ) : ");
+        v = sc.nextLine();
+        while (!v.matches("[1-2]")){
+            System.out.print("Est-elle en urgence ? (1 pour oui et 2 pour non ) : ");
+            v = sc.nextLine();
+        }
+        lettre.setExUr(v.equals("1")?true:false);
         lettre.prixAff();
         return lettre;
     }
-    public static Colis colisInfo() throws IOException {
+    public static Colis colisInfo() {
         Scanner sc = new Scanner(System.in);
         Colis colis = new Colis("", "", "", 00000, false, 0);
+        String v;
         System.out.print("Entrer le nom du destinataire du colis : " );
         colis.setNom(sc.nextLine());
         System.out.print("Entrer l'adresse du destinataire du colis : ");
@@ -99,12 +100,16 @@ public class Main {
         colis.setNomVille(sc.nextLine());
         System.out.print("Entrer le code postal du destinataire du colis : ");
         colis.setCodePost(sc.nextInt());
-        System.out.print("Est-il en recommande ? " );
-        colis.setExRec(sc.nextBoolean());
+        v = sc.nextLine();
+        while (!v.matches("[1-2]")){
+            System.out.print("Est-il en recommande ? (1 pour oui et 2 pour non ) : ");
+            v = sc.nextLine();
+        }
+        colis.setExRec(v.equals("1")?true:false);
         System.out.print("Entrer le poids du colis : ");
         colis.setPoids(sc.nextDouble());
         colis.prixAff();
         return colis;
     }
 
-    }
+}
