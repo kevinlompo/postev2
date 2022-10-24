@@ -71,7 +71,6 @@ public class Main {
         lettre.setNomVille(sc.nextLine());
         System.out.print("Entrer le code postal du destinataire de la lettre :  ");
         lettre.setCodePost(sc.nextInt());
-        System.out.print("Est-elle en recommandee ? (1 pour oui et 2 pour non ) : ");
         v = sc.nextLine();
         while (!v.matches("[1-2]")){
             System.out.print("Est-elle en recommandee ? (1 pour oui et 2 pour non ) : ");
